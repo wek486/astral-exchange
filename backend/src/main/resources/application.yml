@@ -1,0 +1,26 @@
+server:
+  port: ${PORT:8080}
+  address: ${BIND_ADDRESS:0.0.0.0}
+  forward-headers-strategy: ${FORWARD_HEADERS_STRATEGY:none}
+  servlet:
+    session:
+      timeout: 7d
+      cookie:
+        http-only: true
+        same-site: lax
+        secure: ${COOKIE_SECURE:false}
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/astral_exchange?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8}
+    username: ${DB_USER:astral}
+    password: ${DB_PASSWORD:}
+  session:
+    jdbc:
+      initialize-schema: never
+  jackson:
+    time-zone: Asia/Shanghai
+  mvc:
+    async:
+      request-timeout: 60000
+exchange:
+  scheduler-enabled: true
